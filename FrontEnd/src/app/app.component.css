@@ -1,0 +1,53 @@
+body
+{
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  background-color: #A2D6F9;
+}
+
+.not-logged{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color: #A2D6F9;
+}
+
+.login{
+  margin:20px;
+}
+
+button{
+  font-size:150px;
+  height: 215px;
+  color: #335C81 !important;
+}
+
+.spiel{
+  width:300px;
+}
+.title{
+  position: relative;
+  font-size:60px;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  .title{
+    font-size: 30px;
+  }
+
+  button{
+    font-size:50px;
+    height: 70px;
+  }
+
+  .image{
+    height: 150px;
+  }
+
+  .spiel{
+    width:200px
+  }
+}

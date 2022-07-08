@@ -43,7 +43,27 @@ namespace Api.handlers
             }
         }
 
-        
+        public string PostBoardGame(BoardGame boardgame){
+
+            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("ADD_BOARDGAME", conn))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@pboardgame_name", boardgame.boardgame_name);
+                    command.Parameters.AddWithValue("@pboardgame_author", boardgame.boardgame_author);
+                    command.Parameters.AddWithValue("@pmax_players", boardgame.max_players);
+                    command.Parameters.AddWithValue("@pmin_players", boardgame.min_players);
+                    command.Parameters.AddWithValue("@pplaytime", boardgame.playtime);
+                    command.Parameters.AddWithValue("@pstar_rating", boardgame.star_rating);
+
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return "done";
+        }        
     }
 }
 

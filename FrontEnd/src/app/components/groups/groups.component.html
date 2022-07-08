@@ -9,7 +9,6 @@
   <mat-card *ngFor="let group of groups" class="cards">
     <mat-card-title>{{group.group_name}} </mat-card-title>
     <mat-card-subtitle>Join Code - {{group.group_id}}</mat-card-subtitle>
-    <mat-card-subtitle>{{group.users.length}} - Players</mat-card-subtitle>
     <mat-card-actions>
       <a mat-button [routerLink]="['/group',group.group_id]">View</a>
     </mat-card-actions>

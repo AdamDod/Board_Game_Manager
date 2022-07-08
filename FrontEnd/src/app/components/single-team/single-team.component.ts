@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { BoardGame } from 'src/app/models/boardgame';
 import { Game } from 'src/app/models/game';
 import { Group } from 'src/app/models/group';
@@ -28,6 +30,8 @@ export class SingleTeamComponent implements OnInit {
   possibleUsers:User[] = new Array<User>();
   selectedUser:User;
 
+
+
   constructor(private _Activatedroute:ActivatedRoute, private _group:GroupService,private _game:GameService, private _boardgame:BoardGameService, private _users:UserService) {
     this.newGame.players = new Array<User>();
     this.newGame.winners = new Array<User>();
@@ -41,6 +45,7 @@ export class SingleTeamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   load(){

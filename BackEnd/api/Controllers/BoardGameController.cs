@@ -17,4 +17,11 @@ public class BoardGameController : ControllerBase
     {
         return _BoardGameHandler.GetBoardGames();
     }
+
+    [HttpPost]
+    [Route("/boardgame")]
+    public string PostGame([FromBody]BoardGame game)
+    {
+        return _BoardGameHandler.PostBoardGame(game);
+    }
 }

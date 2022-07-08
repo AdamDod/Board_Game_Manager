@@ -1,10 +1,27 @@
-<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-  <button *ngIf="auth.isAuthenticated$ | async;" (click)="continue()">Continue</button>
-</ng-container>
+<body>
+  <div class="login">
+    <div class="title">Board Game Manager</div>
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <app-holder></app-holder>
+    </ng-container>
+    <ng-template #loggedOut>
+      <div class="not-logged">
+        <div>
+          <button mat-button color="primary" (click)="auth.loginWithRedirect()">Log in</button>
+          <div class="spiel">
+            <div>This Website is a project made by Adam Dodson with the angular framework supported by an SQL database and .NET API. please email me with any questions Adamdd@live.com.au</div>
+            <br>
+            <div>Please feel free to use a fake email as this is for showcase and educational purposes.</div>
+          </div>
+        </div>
+        <div>
+          <img class="image" src="../assets/boardgame.png" alt="Image of a chess board">
+        </div>
+      </div>
+    </ng-template>
+  </div>
 
-<ng-template #loggedOut>
-  <button (click)="auth.loginWithRedirect()">Log in</button>
-</ng-template>
+</body>
 
 
-<app-holder *ngIf="auth.isAuthenticated$ | async;"></app-holder>
+

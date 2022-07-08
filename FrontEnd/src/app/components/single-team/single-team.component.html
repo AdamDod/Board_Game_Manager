@@ -80,6 +80,7 @@
   <div class="right">
     <div class="newgame">
       <h1>Start new game</h1>
+
       <mat-form-field appearance="fill">
         <mat-label>Board Games</mat-label>
         <mat-select [(ngModel)]="newGame.boardgame">
@@ -88,7 +89,8 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button (click)="addNewGame()">press</button>
+      <button mat-raised-button (click)="addNewGame()">Add Game</button>
+
       <div class="table">
         <table
           mat-table

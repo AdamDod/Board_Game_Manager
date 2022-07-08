@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddBoardGameComponent } from './components/add-board-game/add-board-game.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { NewGroupComponent } from './components/new-group/new-group.component';
 import { SingleTeamComponent } from './components/single-team/single-team.component';
@@ -7,7 +8,8 @@ import { SingleTeamComponent } from './components/single-team/single-team.compon
 const routes: Routes = [
   { path: '', component: GroupsComponent},
   { path: 'group/:group_id', component: SingleTeamComponent},
-  { path: 'new-group', component: NewGroupComponent}
+  { path: 'new-group', component: NewGroupComponent},
+  { path: 'new-board-game', component: AddBoardGameComponent}
 ];
 
 @NgModule({

@@ -29,6 +29,20 @@ CREATE SEQUENCE Count2.CountBy12
     INCREMENT BY 1;
 GO
 
+IF OBJECT_ID('CountBy13') IS NOT NULL
+    DROP SEQUENCE Count.CountBy1;
+
+IF OBJECT_ID('Count3') IS NOT NULL
+    DROP SCHEMA Count;
+
+Create SCHEMA Count3;
+GO
+
+CREATE SEQUENCE Count3.CountBy13
+    Start WITH 1000
+    INCREMENT BY 1;
+GO
+
 ------------------------------------------------------------
 ----------------------ADD GROUP--------------------
 ------------------------------------------------------------
@@ -128,4 +142,35 @@ BEGIN
     BEGIN CATCH
     END CATCH
 END
+GO
+
+------------------------------------------------------------
+----------------------ADD BOARDGAME--------------------
+------------------------------------------------------------
+IF OBJECT_ID('ADD_BOARDGAME') IS NOT NULL
+    DROP PROCEDURE ADD_BOARDGAME;
+GO
+
+CREATE PROCEDURE ADD_BOARDGAME
+    @pboardgame_name [NVARCHAR] (50),
+    @pboardgame_author [NVARCHAR] (50),
+    @pmax_players int,
+    @pmin_players int,
+    @pplaytime int,
+    @pstar_rating int
+
+AS
+BEGIN
+    DECLARE @game_id BIGINT;
+    SET @game_id = NEXT VALUE FOR Count3.CountBy13;
+    BEGIN TRY
+        INSERT INTO [Boardgame]
+        (boardgame_id,boardgame_name ,boardgame_author, max_players, min_players, playtime, star_rating)
+    VALUES
+        (@game_id,@pboardgame_name,@pboardgame_author,@pmax_players,@pmin_players,@pplaytime,@pstar_rating)
+    END TRY
+    BEGIN CATCH
+    END CATCH
+END
+    RETURN @game_id
 GO

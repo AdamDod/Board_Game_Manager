@@ -19,6 +19,6 @@ export class UserService {
   postUser(user): Observable<string>{
     const headers = { 'content-type': 'application/json' };
     var body = JSON.stringify(user);
-    return this._http.post<string>(this.baseUrl + '/user', body, {'headers':headers})
+    return this._http.post(this.baseUrl + '/user', body, {'headers':headers, responseType:'text'})
   }
 }

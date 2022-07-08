@@ -91,37 +91,35 @@ GO
 
 INSERT INTO [User] ([user_id], [user_name], user_description)
 VALUES
-    (1, 'Adam', 'First Test User'),
-    (2, 'Bob', 'Second Test User'),
-    (3, 'Sam', 'Third Test User')
+    (1, 'Adam', 'First Test User')
+--     (2, 'Bob', 'Second Test User'),
+--     (3, 'Sam', 'Third Test User')
 
 INSERT INTO [Group] (group_id, group_name, created_date)
 VALUES
-    (3, 'No Friends', '08/01/2000'),
-    (1, 'Friends', '01/07/2022'),
-    (2, 'Game Night', '01/01/2020')
+    (1, 'Game Night', '01/01/2022')
 
 INSERT INTO [BoardGame] (boardgame_id,boardgame_name ,boardgame_author, max_players, min_players, playtime, star_rating)
 VALUES
     (1, 'Chess', 'Old Guy',2,2, 20, 4.7 ),
     (2, 'Monoploy', 'Hasbro',2,6, 60, 3)
 
-INSERT INTO [GroupAllocation] ([user_id], group_id, [admin])
-VALUES
-    (1, 1, 1),
-    (1, 2, 0),
-    (2,2,0)
+-- INSERT INTO [GroupAllocation] ([user_id], group_id, [admin])
+-- VALUES
+--     (1, 1, 1),
+--     (1, 2, 0),
+--     (2,2,0)
 
-INSERT INTO [Game] (game_id, group_id, boardgame_id, date_played)
-VALUES
-    (1, 1, 1,'01/07/2022'),
-    (2, 2, 2,'01/01/2022')
+-- INSERT INTO [Game] (game_id, group_id, boardgame_id, date_played)
+-- VALUES
+--     (1, 1, 1,'01/07/2022'),
+--     (2, 2, 2,'01/01/2022')
 
-INSERT INTO [Played] ([user_id], game_id, [win])
-VALUES
-    (1, 1, 0),
-    (2, 2, 1),
-    (2,1,1)
+-- INSERT INTO [Played] ([user_id], game_id, [win])
+-- VALUES
+--     (1, 1, 0),
+--     (2, 2, 1),
+--     (2,1,1)
 
 -- SELECT * FROM [Group] Left JOIN [GroupAllocation] ON [Group].group_id = [GroupAllocation].group_id LEFT JOIN [User] ON [GroupAllocation].[user_id] = [User].[user_id]
 -- SELECT * FROM [Played]

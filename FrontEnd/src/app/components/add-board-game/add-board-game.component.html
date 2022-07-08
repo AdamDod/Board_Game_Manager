@@ -1,0 +1,35 @@
+
+<div class="container">
+  <form class="form">
+    <div class="header">Add a new Board Game <br>to the website!</div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Board Game Name</mat-label>
+      <input [(ngModel)]="newgame.boardgame_name" matInput placeholder="Name" value="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Board Game Author</mat-label>
+      <input [(ngModel)]="newgame.boardgame_author" matInput placeholder="Author" value="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Max players</mat-label>
+      <input type="number" [(ngModel)]="newgame.max_players" matInput placeholder="Max-Players" value="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Min Players</mat-label>
+      <input type="number" [(ngModel)]="newgame.min_players" matInput placeholder="Min-Players" value="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Board Game Playtime (mins)</mat-label>
+      <input type="number" [(ngModel)]="newgame.playtime" matInput placeholder="Playtime" value="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Board Game Star Rating 0-5</mat-label>
+      <input type="number" max="5" [(ngModel)]="newgame.star_rating" matInput placeholder="Stars" value="" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <button (click)="submit()" mat-raised-button [disabled]="!newgame.boardgame_name||!newgame.boardgame_author||!newgame.max_players||!newgame.min_players||!newgame.playtime||!newgame.star_rating||newgame.star_rating>=5">Click</button>
+    <div *ngIf="newgame.boardgame_name&&newgame.boardgame_author&&newgame.max_players&&newgame.min_players&&newgame.playtime&&newgame.star_rating&&newgame.star_rating>=5">All fields not filled</div>
+  </form>
+
+</div>
+

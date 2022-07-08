@@ -14,6 +14,7 @@ import { SingleTeamComponent } from './components/single-team/single-team.compon
 import { NewGroupComponent } from './components/new-group/new-group.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { HolderComponent } from './components/holder/holder.component';
+import { AddBoardGameComponent } from './components/add-board-game/add-board-game.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HolderComponent } from './components/holder/holder.component';
     GroupsComponent,
     SingleTeamComponent,
     NewGroupComponent,
-    HolderComponent
+    HolderComponent,
+    AddBoardGameComponent
   ],
   imports: [
     BrowserModule,

@@ -6,12 +6,58 @@
   bottom: 0;
   left: 0;
   right: 0;
+  background-color:#A2D6F9;
 }
 
 .spacer {
   flex: 1 auto;
+  background-color:#A2D6F9;
 }
 
 .content {
-  height:100vh;
+  height: 100vh;
+  background-color:#A2D6F9;
+}
+
+.top-bar{
+  color:white;
+  background-color:#335C81;
+}
+
+.logout-button{
+  color:white;
+  background-color: #274060;
+}
+
+.username{
+  padding-right: 10px;
+}
+
+.heading-small{
+  display:none;
+}
+.heading-large{
+  display:inline-block;
+}
+
+.sidenav-container{
+  background-color:#335C81;
+}
+
+.nav-option{
+  color:white;
+}
+
+@media only screen and (max-width: 500px) {
+  .username{
+    display:none;
+  }
+
+  .heading-small{
+    display:inline-block;
+  }
+  .heading-large{
+    display:none;
+  }
+
 }

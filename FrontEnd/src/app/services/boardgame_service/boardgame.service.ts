@@ -16,5 +16,11 @@ export class BoardGameService {
   getBoardGames(): Observable<BoardGame[]>{
     return this._http.get<BoardGame[]>(this.baseUrl + '/boardgame')
   }
+
+  postBoardGame(boardgame): Observable<string>{
+    const headers = { 'content-type': 'application/json' };
+    var body = JSON.stringify(boardgame);
+    return this._http.post(this.baseUrl + '/boardgame', body, {'headers':headers, responseType:'text'})
+  }
 }
 
