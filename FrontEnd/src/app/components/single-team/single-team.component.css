@@ -1,3 +1,43 @@
 .container{
   margin:50px;
+  height:100vh;
+  width:100%;
+  display:flex;
 }
+
+table {
+  width: 80%;
+  height: 70%;
+  overflow: scroll;
+}
+
+.new-game{
+  width: 80%;
+  height: 90%;
+}
+
+.table{
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 80%;
+  width: 100%;
+
+}
+
+.left, .right{
+  flex:50%;
+}
+
+.leaderboard, .newgame, .games, .addplayer{
+  width: 100%;
+  height: 50%;
+}
+
+.header{
+  margin-left: 100px;
+  margin-top:20px;
+  font-size: 50px;
+}
+
+
+

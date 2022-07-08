@@ -4,22 +4,24 @@ import { HttpClientModule} from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from 'src/material.module';
-import { MainComponent } from './components/main/main.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { SingleTeamComponent } from './components/single-team/single-team.component';
 import { NewGroupComponent } from './components/new-group/new-group.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { HolderComponent } from './components/holder/holder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     GroupsComponent,
     SingleTeamComponent,
-    NewGroupComponent
+    NewGroupComponent,
+    HolderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,11 @@ import { NewGroupComponent } from './components/new-group/new-group.component';
     BrowserAnimationsModule,
     MaterialExampleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-0sne3sh6.us.auth0.com',
+      clientId: 'jWVzgQuf0xL22UO5XYtMxDh4hWJklDhX'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

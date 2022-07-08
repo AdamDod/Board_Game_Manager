@@ -17,4 +17,11 @@ public class UserController : ControllerBase
     {
         return _UserHandler.GetUsers();
     }
+
+    [HttpPost]
+    [Route("/user")]
+    public string PostUser(User user)
+    {
+        return _UserHandler.PostUser(user);
+    }
 }

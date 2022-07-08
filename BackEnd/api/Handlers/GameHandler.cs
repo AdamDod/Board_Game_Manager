@@ -8,13 +8,13 @@ namespace Api.handlers
 {
     public class GameHandler : DatabaseHandler
     {
-        public IEnumerable<Game> GetUsers(string group_id)
+        public IEnumerable<Game> GetGamesForGroup(string group_id)
         {
             List<Game> games = new List<Game>();
             using (SqlConnection conn = new SqlConnection(GetConnectionString()))
             {
                 conn.Open();
-                using (SqlCommand command = new SqlCommand($"SELECT * FROM [Game] LEFT JOIN [Played] ON [Game].game_id = [Played].game_id LEFT JOIN [BoardGame] ON [Game].boardgame_id = [BoardGame].boardgame_id LEFT JOIN [User] ON [User].[user_id] = [Played].[user_id] WHERE [Game].game_id = '{group_id}'", conn))
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM [Game] LEFT JOIN [Played] ON [Game].game_id = [Played].game_id LEFT JOIN [BoardGame] ON [Game].boardgame_id = [BoardGame].boardgame_id LEFT JOIN [User] ON [User].[user_id] = [Played].[user_id] WHERE [Game].group_id = '{group_id}'", conn))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -43,25 +43,28 @@ namespace Api.handlers
                             {
                                 games.Add(new_game);
                             }
-
-                            User new_user = new User()
+                            if (!reader.IsDBNull(4))
                             {
-                                user_id = reader.GetString(14),
-                                user_name = reader.GetString(15),
-                                user_description = reader.GetString(16)
-                            };
-
-                            foreach (var game in games)
-                            {
-                                if (game.group_id == new_game.game_id)
+                                User new_user = new User()
                                 {
-                                    game.players.Add(new_user);
-                                    if (reader.GetBoolean(6))
+                                    user_id = reader.GetString(14),
+                                    user_name = reader.GetString(15),
+                                    user_description = reader.GetString(16)
+                                };
+
+                                foreach (var game in games)
+                                {
+                                    if (game.game_id == new_game.game_id)
                                     {
-                                        game.winners.Add(new_user);
+                                        game.players.Add(new_user);
+                                        if (reader.GetBoolean(6))
+                                        {
+                                            game.winners.Add(new_user);
+                                        }
                                     }
                                 }
                             }
+                            
 
                         }
                         conn.Close();
@@ -79,6 +82,59 @@ namespace Api.handlers
             }
         }
 
+        public string PostGame(Game game){
+
+            var game_id = -1;
+
+            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("ADD_GAME", conn))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@pGroup_id", game.group_id);
+                    command.Parameters.AddWithValue("@pboardgame_id", game.boardgame.boardgame_id);
+                    command.Parameters.AddWithValue("@pDate_played", game.date_played);
+
+                    command.Parameters.Add("@game_id", System.Data.SqlDbType.NVarChar).Direction = ParameterDirection.ReturnValue;
+
+                    command.ExecuteNonQuery();
+                    game_id = (int)command.Parameters["@game_id"].Value;
+                    conn.Close();
+                }
+            }
+            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                
+                
+                    foreach (var user in game.players)
+                    {
+                        Console.WriteLine(user.user_id);
+                        conn.Open();
+                        Boolean contains = false;
+                        using (SqlCommand command = new SqlCommand("ADD_GAMEALLOCATION", conn))
+                        {
+                            foreach (var admin in game.winners)
+                            {
+                                if (admin.user_id == user.user_id)
+                                {
+                                    contains = true;
+                                }else{
+                                    contains = false;
+                                }
+                            }
+                            command.CommandType = System.Data.CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("@pUser_ID", user.user_id.ToString());
+                            command.Parameters.AddWithValue("@pGame_ID", game_id.ToString());
+                            command.Parameters.AddWithValue("@pWin", contains);
+
+                            command.ExecuteNonQuery();
+                        }
+                        conn.Close();
+                }
+            }
+            return "{done}";
+        }
 
     }
 }

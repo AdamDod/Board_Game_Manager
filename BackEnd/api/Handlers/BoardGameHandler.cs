@@ -6,50 +6,39 @@ using classes;
 
 namespace Api.handlers
 {
-    public class UserHandler : DatabaseHandler
+    public class BoardGameHandler : DatabaseHandler
     {
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<BoardGame> GetBoardGames()
         {
-            List<User> users = new List<User>();
+            List<BoardGame> boardgames = new List<BoardGame>();
             using (SqlConnection conn = new SqlConnection(GetConnectionString()))
             {
                 conn.Open();
-                using (SqlCommand command = new SqlCommand("SELECT * FROM [User]", conn))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM [BoardGame]", conn))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {                              
-                            users.Add(new User(){
-                                user_id= reader.GetString(0),
-                                user_name = reader.GetString(1),
-                                user_description = reader.GetString(2)
+                            boardgames.Add(new BoardGame(){
+                                boardgame_id= reader.GetString(0),
+                                boardgame_name = reader.GetString(1),
+                                boardgame_author = reader.GetString(2),
+                                max_players = reader.GetInt32(3),
+                                min_players = reader.GetInt32(4),
+                                playtime = reader.GetInt32(5),
+                                star_rating = reader.GetInt32(6),
                             });  
                         }
                         conn.Close();
-                        if (users.Count ==0)
+                        if (boardgames.Count ==0)
                         {   
                             return null;
                         }else{
-                            return users;
+                            return boardgames;
                         }
                         
                     }
-                }
-            }
-        }
-
-        public string PostUser(User user)
-        {
-            List<User> users = new List<User>();
-            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
-            {
-                conn.Open();
-                using (SqlCommand command = new SqlCommand($"INSERT INTO [User] ([user_id],[user_name],user_description) VALUES ('{user.user_id}', '{user.user_name}','')", conn))
-                {
-                    command.ExecuteNonQuery();
-                    conn.Close();
-                    return "done";
                 }
             }
         }

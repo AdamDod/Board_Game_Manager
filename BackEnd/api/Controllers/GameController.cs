@@ -16,6 +16,13 @@ public class GameController : ControllerBase
     [Route("/game")]
     public IEnumerable<Game> GetGamesForGroup(string group_id)
     {
-        return _UserHandler.GetUsers(group_id);
+        return _UserHandler.GetGamesForGroup(group_id);
+    }
+
+    [HttpPost]
+    [Route("/game")]
+    public string PostGame([FromBody]Game game)
+    {
+        return _UserHandler.PostGame(game);
     }
 }

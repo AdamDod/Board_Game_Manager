@@ -123,6 +123,13 @@ VALUES
     (2, 2, 1),
     (2,1,1)
 
-SELECT * FROM [Group] Left JOIN [GroupAllocation] ON [Group].group_id = [GroupAllocation].group_id LEFT JOIN [User] ON [GroupAllocation].[user_id] = [User].[user_id]
-SELECT * FROM [Game]
-SELECT * FROM [Game] LEFT JOIN [Played] ON [Game].game_id = [Played].game_id LEFT JOIN [BoardGame] ON [Game].boardgame_id = [BoardGame].boardgame_id LEFT JOIN [User] ON [User].[user_id] = [Played].[user_id] WHERE [Game].game_id = '{group_id}'
+-- SELECT * FROM [Group] Left JOIN [GroupAllocation] ON [Group].group_id = [GroupAllocation].group_id LEFT JOIN [User] ON [GroupAllocation].[user_id] = [User].[user_id]
+-- SELECT * FROM [Played]
+SELECT * FROM [User] 
+-- LEFT JOIN [Played] ON [Game].game_id = [Played].game_id 
+-- LEFT JOIN [BoardGame] ON [Game].boardgame_id = [BoardGame].boardgame_id 
+-- LEFT JOIN [User] ON [User].[user_id] = [Played].[user_id] 
+-- WHERE [Game].game_id = '{group_id}'
+
+
+-- SELECT * FROM [Game] LEFT JOIN [Played] ON [Game].game_id = [Played].game_id LEFT JOIN [BoardGame] ON [Game].boardgame_id = [BoardGame].boardgame_id LEFT JOIN [User] ON [User].[user_id] = [Played].[user_id] WHERE [Game].group_id = '2'

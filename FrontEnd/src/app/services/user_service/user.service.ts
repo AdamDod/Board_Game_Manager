@@ -13,6 +13,12 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   getAllUsers(): Observable<User[]>{
-    return this._http.get<User[]>(this.baseUrl + '/user')
+    return this._http.get<User[]>(this.baseUrl + '/user',)
+  }
+
+  postUser(user): Observable<string>{
+    const headers = { 'content-type': 'application/json' };
+    var body = JSON.stringify(user);
+    return this._http.post<string>(this.baseUrl + '/user', body, {'headers':headers})
   }
 }

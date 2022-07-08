@@ -1,11 +1,17 @@
 <div class="container">
-  <button mat-raised-button [routerLink]="['/new-group']">New Group</button>
-  
+  <a mat-raised-button [routerLink]="['/new-group']">New Group</a>
+  <button mat-raised-button (click)="joinGroup()" >Join Group</button>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>TeamID</mat-label>
+    <input [(ngModel)]="joinGroupID" matInput placeholder="1234">
+  </mat-form-field>
+
   <mat-card *ngFor="let group of groups" class="cards">
-    <mat-card-title>{{group.group_name}}</mat-card-title>
+    <mat-card-title>{{group.group_name}} </mat-card-title>
+    <mat-card-subtitle>Join Code - {{group.group_id}}</mat-card-subtitle>
     <mat-card-subtitle>{{group.users.length}} - Players</mat-card-subtitle>
     <mat-card-actions>
-      <button mat-button [routerLink]="['/group',group.group_id]">View</button>
+      <a mat-button [routerLink]="['/group',group.group_id]">View</a>
     </mat-card-actions>
   </mat-card>
 </div>

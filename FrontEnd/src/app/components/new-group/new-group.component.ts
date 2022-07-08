@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
+import { AuthService } from '@auth0/auth0-angular';
 import { Group } from 'src/app/models/group';
 import { User } from 'src/app/models/user';
 import { GroupService } from 'src/app/services/group_service/group.service';
@@ -16,11 +17,12 @@ export class NewGroupComponent implements OnInit {
   newGroup:Group = new Group();
   users:User[] = new Array<User>();
   selectedUser:User
+  userData;
 
   @ViewChild(MatTable) table: MatTable<User>;
 
 
-  constructor(public _user:UserService,private _snackBar: MatSnackBar, public _group:GroupService) {
+  constructor(public _user:UserService,private _snackBar: MatSnackBar, public _group:GroupService, public auth: AuthService) {
     this.newGroup.users = new Array<User>();
     this.newGroup.admins = new Array<User>();
     this.newGroup.create_date = new Date();
@@ -29,8 +31,12 @@ export class NewGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._user.getAllUsers().subscribe(unpackedUser => this.users = unpackedUser,null,()=>{
-
+    this.auth.getUser().subscribe(data => this.userData = data,null,()=>{
+      this._user.getAllUsers().subscribe(unpackedUser => this.users = unpackedUser,null,()=>{
+        this.newGroup.users.push(this.users[this.users.findIndex(u=>u.user_id === this.userData.sub)]);
+        this.newGroup.admins.push(this.users[this.users.findIndex(u=>u.user_id === this.userData.sub)]);
+        this.table.renderRows();
+      });
     });
   }
 
