@@ -7,7 +7,8 @@ import { Group } from '../../models/group';
   providedIn: 'root'
 })
 export class GroupService {
-  readonly baseUrl: string = "https://localhost:7214";
+  // readonly baseUrl: string = "https://localhost:7214";
+  readonly baseUrl: string = "https://boardgame-manager-api.azurewebsites.net";
 
   constructor(private _http: HttpClient) { }
 

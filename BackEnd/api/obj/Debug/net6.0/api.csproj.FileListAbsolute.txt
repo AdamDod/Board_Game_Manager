@@ -33,3 +33,8 @@ C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\obj\Debug\
 C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\obj\Debug\net6.0\api.pdb
 C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\obj\Debug\net6.0\api.genruntimeconfig.cache
 C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\obj\Debug\net6.0\ref\api.dll
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\bin\Debug\net6.0\publish\web.config
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\bin\Debug\net6.0\publish\api.deps.json
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\bin\Debug\net6.0\publish\api.runtimeconfig.json
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\bin\Debug\net6.0\publish\appsettings.Development.json
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\api\bin\Debug\net6.0\publish\appsettings.json

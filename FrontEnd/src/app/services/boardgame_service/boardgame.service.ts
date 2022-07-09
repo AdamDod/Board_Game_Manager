@@ -9,8 +9,8 @@ import { BoardGame } from 'src/app/models/boardgame';
   providedIn: 'root'
 })
 export class BoardGameService {
-  readonly baseUrl: string = "https://localhost:7214";
-
+  // readonly baseUrl: string = "https://localhost:7214";
+  readonly baseUrl: string = "https://boardgame-manager-api.azurewebsites.net";
   constructor(private _http: HttpClient) { }
 
   getBoardGames(): Observable<BoardGame[]>{

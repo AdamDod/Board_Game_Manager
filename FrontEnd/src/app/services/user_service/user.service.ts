@@ -8,7 +8,8 @@ import { User } from 'src/app/models/user';
   providedIn: 'root'
 })
 export class UserService {
-  readonly baseUrl: string = "https://localhost:7214";
+  // readonly baseUrl: string = "https://localhost:7214";
+  readonly baseUrl: string = "https://boardgame-manager-api.azurewebsites.net";
 
   constructor(private _http: HttpClient) { }
 

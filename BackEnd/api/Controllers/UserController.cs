@@ -24,4 +24,11 @@ public class UserController : ControllerBase
     {
         return _UserHandler.PostUser(user);
     }
+
+    [HttpGet]
+    [Route("/test")]
+    public string test()
+    {
+        return "test";
+    }
 }
