@@ -3,33 +3,56 @@ body
   display: flex;
   align-items:center;
   justify-content:center;
-  background-color: #A2D6F9;
+  background-image: url('../assets/splash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.container{
+  height:100%;
 }
 
 .not-logged{
   display:flex;
   align-items:center;
   justify-content:center;
-  background-color: #A2D6F9;
+  height: min-content;
+  flex-direction: column;
+  height:100%;
+}
+
+.dimmer{
 }
 
 .login{
-  margin:20px;
+  height: 100%;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.407);
 }
 
 button{
   font-size:150px;
-  height: 215px;
-  color: #335C81 !important;
+  background-color: rgba(0, 0, 0, 0.588) !important;
+  color:white;
+  height:190px;
+  margin:20px;
+}
+
+button:hover{
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .spiel{
   width:300px;
+  font-size:20px;
+  text-align:center;
+  font-weight: bold;
 }
 .title{
   position: relative;
-  font-size:60px;
+  font-size:70px;
   font-weight: bolder;
+  height: 80px;
 }
 
 @media only screen and (max-width: 1200px) {
