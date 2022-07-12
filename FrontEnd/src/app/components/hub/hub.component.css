@@ -1,0 +1,35 @@
+.card{
+  width: 300px;
+  height:min-content;
+  margin:20px;
+}
+
+body{
+  margin:50px;
+  display: flex;
+}
+
+.dialog-body{
+  flex-direction:column;
+}
+
+.spinner{
+  position:absolute;
+  top:20%;
+  left:50%;
+}
+
+table{
+  border-collapse: collapse;
+  width: 500px;
+}
+
+td,th{
+  padding:20px;
+  text-align:left;
+  border: 1px solid #dddddd;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

@@ -16,6 +16,7 @@ export class GroupsComponent implements OnInit {
   joinGroupID:string;
   userData;
   allgroups:Group[];
+  loaded:boolean;
 
   constructor(public _group:GroupService, public _auth:AuthService, private _snackBar: MatSnackBar) {
   }
@@ -28,8 +29,9 @@ export class GroupsComponent implements OnInit {
 
   load(){
     this._group.getAllGroupsForUser(this.userData.sub).subscribe(unpackedGroups => this.groups = unpackedGroups,null,()=>{
-    });
-    this._group.getAllGroups().subscribe(unpackedGroups => this.allgroups = unpackedGroups,null,()=>{
+      this._group.getAllGroups().subscribe(unpackedGroups => this.allgroups = unpackedGroups,null,()=>{
+        this.loaded = true;
+      });
     });
   }
 

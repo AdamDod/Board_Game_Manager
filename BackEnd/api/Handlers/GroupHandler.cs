@@ -184,7 +184,17 @@ namespace Api.handlers
             using (SqlConnection conn = new SqlConnection(GetConnectionString()))
             {
                 conn.Open();
-                using (SqlCommand command = new SqlCommand($"DELETE FROM [GroupAllocation] WHERE [user_id] = {user_id} AND group_id = {group_id}", conn))
+                using (SqlCommand command = new SqlCommand($"DELETE FROM [GroupAllocation] WHERE [user_id] = '{user_id}' AND group_id = '{group_id}'", conn))
+                {
+
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand($"DELETE [Played] FROM [Played] Left Join [Game] ON [Played].game_id = [Game].game_id WHERE [Played].user_id = '{user_id}'", conn))
                 {
 
                     command.ExecuteNonQuery();

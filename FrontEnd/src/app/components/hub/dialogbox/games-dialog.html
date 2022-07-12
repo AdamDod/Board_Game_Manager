@@ -1,0 +1,24 @@
+<body class="dialog-body">
+  <h1>My Games</h1>
+  <table>
+    <tr>
+      <th><h2>Board Game</h2></th>
+      <th><h2>Group Name</h2></th>
+      <th><h2>Date Played</h2></th>
+      <th><h2>Win</h2></th>
+    </tr>
+    <ng-container>
+      <tr *ngFor="let game of data.games">
+        <td>{{game.boardgame.boardgame_name}}</td>
+        <td>{{findGroupName(game.group_id)}}</td>
+        <td>{{ game.date_played|date:'shortDate'}}</td>
+        <td>
+          <div *ngIf="winner(game);else elseBlock">✓</div>
+          <ng-template #elseBlock>X</ng-template>
+        </td>
+      </tr>
+    </ng-container>
+
+  </table>
+</body>
+

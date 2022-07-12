@@ -19,6 +19,14 @@ public class GameController : ControllerBase
         return _UserHandler.GetGamesForGroup(group_id);
     }
 
+    /// <param name="user_id"></param>
+    [HttpGet]
+    [Route("/gamebyuser")]
+    public IEnumerable<Game> GetGamesForUser(string user_id)
+    {
+        return _UserHandler.GetGamesForUser(user_id);
+    }
+
     [HttpPost]
     [Route("/game")]
     public string PostGame([FromBody]Game game)

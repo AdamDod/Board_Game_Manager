@@ -25,4 +25,10 @@ export class GameService {
     return this._http.post<string>(this.baseUrl + '/game', body, {'headers':headers, responseType:'json'})
   }
 
+  getGamesForUser(user_id:string): Observable<Game[]>{
+    const params = new HttpParams()
+      .append('user_id', user_id);
+    return this._http.get<Game[]>(this.baseUrl + '/gamebyuser', {'params':params})
+  }
+
 }

@@ -1,0 +1,19 @@
+<body class="dialog-body">
+  <h1>My Groups</h1>
+  <table>
+    <tr>
+      <th><h2>Name</h2></th>
+      <th><h2>Join Group ID</h2></th>
+      <th><h2>Link</h2></th>
+    </tr>
+    <ng-container>
+      <tr *ngFor="let group of data">
+        <td>{{group.group_name}}</td>
+        <td>{{group.group_id}}</td>
+        <td><button mat-raised-button [routerLink]="['/group',group.group_id]" mat-dialog-close>View Group</button></td>
+      </tr>
+    </ng-container>
+
+  </table>
+</body>
+

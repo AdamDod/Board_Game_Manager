@@ -34,7 +34,7 @@ export class GroupService {
     const params = new HttpParams()
       .append('group_id', group_id)
       .append('user_id', user_id);
-    return this._http.delete<string>(this.baseUrl + '/groupallocation', {'params':params})
+    return this._http.delete(this.baseUrl + '/groupallocation', {'params':params, responseType:'text'})
   }
 
   addUserToGroup(group_id:string, user_id:string): Observable<string>{

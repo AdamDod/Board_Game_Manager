@@ -1,0 +1,3 @@
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\publish\classes.dll
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\publish\classes.deps.json
+C:\Users\adamd\OneDrive\Desktop\Coding\Board_Game_Manager\BackEnd\publish\classes.pdb

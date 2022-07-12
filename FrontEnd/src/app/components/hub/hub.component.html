@@ -1,0 +1,19 @@
+<body *ngIf="loaded">
+  <mat-card class="card">
+    <mat-card-header></mat-card-header>
+    <h2>Total groups you are in!</h2>
+    <p>{{groups.length}}</p>
+    <button mat-button (click)="openGroupDialog()">View Groups</button>
+  </mat-card>
+  <mat-card class="card">
+    <mat-card-header></mat-card-header>
+    <h2>Total Games Played</h2>
+    <p>{{numOfGames()}}</p>
+    <h2>Wins</h2>
+    <p>{{calcWins()}}</p>
+    <button mat-button (click)="openGameDialog()">View Games</button>
+  </mat-card>
+</body>
+
+<mat-spinner class="spinner" *ngIf="!loaded"></mat-spinner>
+

@@ -122,8 +122,8 @@ VALUES
 --     (2,1,1)
 
 -- SELECT * FROM [Group] Left JOIN [GroupAllocation] ON [Group].group_id = [GroupAllocation].group_id LEFT JOIN [User] ON [GroupAllocation].[user_id] = [User].[user_id]
--- SELECT * FROM [Played]
-SELECT * FROM [User] 
+SELECT * FROM [Played]
+DELETE [Played] FROM [Played] Left Join [Game] ON [Played].game_id = [Game].game_id WHERE [Played].user_id = 'auth0|62c2987014edd3b1a4d74786';
 -- LEFT JOIN [Played] ON [Game].game_id = [Played].game_id 
 -- LEFT JOIN [BoardGame] ON [Game].boardgame_id = [BoardGame].boardgame_id 
 -- LEFT JOIN [User] ON [User].[user_id] = [Played].[user_id] 

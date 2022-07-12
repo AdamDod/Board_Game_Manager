@@ -5,3 +5,9 @@
 .cards{
   margin: 10px;
 }
+
+.spinner{
+  position:absolute;
+  top:20%;
+  left:50%;
+}
