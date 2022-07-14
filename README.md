@@ -15,3 +15,6 @@ https://adamportfolio.azurewebsites.net/
 - ASP.NET
 - Auth0
 - SQL Server
+
+## API
+![Swagger img of api](https://github.com/AdamDod/Board_Game_Manager/blob/main/Swagger.PNG)
