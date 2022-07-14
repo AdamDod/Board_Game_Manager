@@ -19,3 +19,7 @@ https://adamportfolio.azurewebsites.net/
 
 ## API
 ![Swagger img of api](https://github.com/AdamDod/Board_Game_Manager/blob/main/Swagger.PNG)
+
+
+## Database ERD
+![Entity Relationship Diagram of database](https://github.com/AdamDod/Board_Game_Manager/blob/main/Untitled%20Diagram.jpg)
